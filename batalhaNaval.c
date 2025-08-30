@@ -16,8 +16,8 @@ int main() {
   // Coordernadas iniciais
   int linha1 = 1, coluna1 = 2;
   int linha2 = 3, coluna2 = 4;
-  int linha3 = 7, coluna3 = 3;
-  int linha4 = 9, coluna4 = 3;
+  int linha3 = 5, coluna3 = 7;
+  int linha4 = 6, coluna4 = 3;
 
   // Verifica se os navios estão na mesma posição
   if (((linha1 == linha2) && (coluna1 == coluna2)) ||
@@ -58,7 +58,7 @@ int main() {
 
   // Preencha navio na horizontal
   for (int i = 0; i < 3; i++) {
-    tabuleiro[linha1][(coluna1) + i] = NAVIO;
+    tabuleiro[linha1][coluna1 + i] = NAVIO;
   }
 
   // Navio 2 (vertical)
@@ -78,19 +78,19 @@ int main() {
 
   // Preencha navio na vertical
   for (int i = 0; i < 3; i++) {
-    tabuleiro[(linha2) + i][coluna2] = NAVIO;
+    tabuleiro[linha2 + i][coluna2] = NAVIO;
   }
 
-  // Navio 3 (diagonal)
+  // Navio 3 (diagonal principal)
 
   // Verifica se o navio diagonal cabe no tabuleiro
-  if (linha3 - 2 < 0 || coluna3 + 2 > 9) {
+  if (linha3 + 2 > 9 || coluna3 + 2 > 9) {
     printf("Navio diagonal nao cabe!\n");
     return 0;
   }
 
   for (int i = 0; i < 3; i++) {
-    if (tabuleiro[linha3 - i][coluna3 + i] == 3) {
+    if (tabuleiro[linha3 + i][coluna3 + i] == 3) {
       printf("Sobreposicao de navios!\n");
       return 0;
     }
@@ -98,19 +98,19 @@ int main() {
 
   // Preencha navio na diagonal
   for (int i = 0; i < 3; i++) {
-    tabuleiro[(linha3)-i][(coluna3) + i] = NAVIO;
+    tabuleiro[linha3 + i][coluna3 + i] = NAVIO;
   }
 
-  // Navio 4 (diagonal)
+  // Navio 4 (diagonal secundária)
 
   // Verifica se o navio diagonal cabe no tabuleiro
-  if (linha4 - 2 < 0 || coluna4 + 2 > 9) {
+  if (linha4 + 2 > 9 || coluna4 - 2 < 0) {
     printf("Navio diagonal nao cabe!\n");
     return 0;
   }
 
   for (int i = 0; i < 3; i++) {
-    if (tabuleiro[linha4 - i][coluna4 + i] == 3) {
+    if (tabuleiro[linha4 + i][coluna4 - i] == 3) {
       printf("Sobreposicao de navios!\n");
       return 0;
     }
@@ -118,7 +118,7 @@ int main() {
 
   // Preencha navio na diagonal
   for (int i = 0; i < 3; i++) {
-    tabuleiro[(linha4)-i][(coluna4) + i] = NAVIO;
+    tabuleiro[linha4 + i][coluna4 - i] = NAVIO;
   }
 
   // Exibe o cabeçalho das colunas
