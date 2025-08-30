@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
+  char colunas[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
   int tabuleiro[10][10];
   int navio1[3] = {3, 3, 3};
   int navio2[3] = {3, 3, 3};
@@ -59,8 +60,16 @@ int main() {
     tabuleiro[linha2 + i][coluna2] = navio2[i];
   }
 
-  // Exibe o tabuleiro
+  // Exibe o cabeçalho das colunas
+  printf("    ");
   for (int i = 0; i < 10; i++) {
+    printf("%c ", colunas[i]);
+  }
+  printf("\n");
+
+  // Exibe cada linha com o número
+  for (int i = 0; i < 10; i++) {
+    printf("%d | ", i);
     for (int j = 0; j < 10; j++) {
       printf("%d ", tabuleiro[i][j]);
     }
